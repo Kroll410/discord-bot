@@ -1,4 +1,4 @@
-def populate(bot, data):
+def populate_channels(bot, data):
     key_list = list(data.keys())
     val_list = list(data.values())
 
