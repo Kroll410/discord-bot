@@ -1,14 +1,15 @@
 import discord
 from discord import Intents
 from discord.ext import commands
-import config
+import os
 
 GAMES = {
     'Dota 2': 'Жопа 2🌈🍆',
     'Counter-Strike: Global Offensive': '╔ КС #1🔫',
     'Minecraft': 'Майн🟩🟫',
     'Dead by Daylight': 'ДБД🏃🪓',
-    'wtf': 'Нейтралка🎮🪑'
+    'wtf': 'Нейтралка🎮🪑',
+    'talk_channel': 'БАЛДЬОЖ🍺👬🌚'
 }
 
 client = discord.Client(guild_subscriptions=True)
@@ -36,15 +37,16 @@ bot = commands.Bot(command_prefix='$', intents=intents)
 @bot.event
 async def on_member_update(before, after):
     from population import populate
-    if any([after.activity is None, after.voice is None, before.voice is None]):
+    if any([after.voice is None, before.voice is None]):
         return
 
-    channel = populate(bot, data=GAMES).get(after.activity.name, GAMES['wtf'])
-    if channel:
-        await after.move_to(channel)
+    game = after.activity
+    if game is None:
+        await after.move_to(GAMES['talk_channel'])
     else:
-        await after.move_to('test')
+        channel = populate(bot, data=GAMES).get(after.activity.name, GAMES['wtf'])
+        await after.move_to(channel)
 
 
 print("Server Running")
-bot.run(config.Config.TOKEN)
+bot.run(os.environ.get('DISCORD_BOT_TOKEN'))
