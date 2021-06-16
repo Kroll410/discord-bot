@@ -9,7 +9,7 @@ GAMES = {
     'Minecraft': 'Майн🟩🟫',
     'Dead by Daylight': 'ДБД🏃🪓',
     'wtf': 'Нейтралка🎮🪑',
-    'talk_channel': 'БАЛДЬОЖ🍺👬🌚'
+    'talk_channel': 'Пиздёж🎭🚬'
 }
 
 client = discord.Client(guild_subscriptions=True)
