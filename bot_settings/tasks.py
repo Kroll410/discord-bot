@@ -7,7 +7,7 @@ from discord.ext import tasks
 from setup import bot
 
 
-@tasks.loop(minutes=45)
+@tasks.loop(seconds=5)
 async def mytask():
     from discord import FFmpegPCMAudio
     try:
