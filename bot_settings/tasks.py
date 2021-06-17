@@ -18,7 +18,7 @@ async def mytask():
                 if len(channel.members) >= 1:
                     x = await channel.connect()
                     x.play(
-                        source=FFmpegPCMAudio(executable='ffmpeg.exe', source=f'mp3/{randint(1, 4)}.mp3'),
+                        source=FFmpegPCMAudio(executable='ffmpeg', source=f'mp3/{randint(1, 4)}.mp3'),
                     )
                     while x.is_playing():
                         await sleep(1)
