@@ -12,22 +12,20 @@ async def on_member_update(before, after):
     if any([after.voice is None, before.voice is None]):
         return
 
-    channel = after.voice.channel
-    if channel in populate_channels(bot, MAIN_CHANNELS).values():
+    if str(before.voice.channel.id) in populate_channels(bot, MAIN_CHANNELS).keys():
         return
-
-    game = after.activity
-    if game is None:
-        await after.move_to(GAMES['talk_and_play_channel'])
     else:
-        channel = populate_channels(bot, data=GAMES).get(after.activity.name, GAMES['wtf'])
-        await after.move_to(channel)
+        if after.activity in (ch := populate_channels(bot, GAMES)).keys():
+            await after.move_to(ch[after.activity])
+        else:
+            await after.move_to(ch['wtf'])
 
+        if after.activity is None:
+            await after.move_to(populate_channels(bot, MAIN_CHANNELS)['855157821988667432'])
 
 @bot.event
 async def on_message(message):
     if message.author == client.user:
         return
-
-    if str(message.content).startswith('test'):
-        await message.channel.send('пошёл нахуй')
+    if any(x in message.content for x in ['Юра', 'юра', 'пракоп', 'прокоп']):
+        await message.channel.send('іди нахуй')

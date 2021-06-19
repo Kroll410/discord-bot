@@ -1,12 +1,18 @@
+from discord.ext import commands
+
 from setup import bot
 
 
-@bot.command()
-async def rofl(ctx):
-    print('here')
-    await ctx.send('/tts Завали ебало')
+class Greetings(commands.Cog):
+
+    @commands.command(pass_context=True)
+    async def test(self, ctx, arg):
+        print('here')
+        await bot.say(arg)
+
+    @commands.command(pass_context=True)
+    async def cmd(self, ctx):
+        await ctx.send('gavno')
 
 
-@bot.command()
-async def test(ctx, arg):
-    await ctx.send(arg, tts=True)
+bot.add_cog(Greetings())
