@@ -2,6 +2,10 @@ import discord
 from discord import Intents
 from discord.ext import commands
 
+FREE_CHANNELS = {
+    '763136430745583677': '763136430745583677',
+}
+
 GAMES = {
     'Dota 2': '853200492914147338',
     'Counter-Strike: Global Offensive': '853202820949082143',

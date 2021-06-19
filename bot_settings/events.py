@@ -1,4 +1,4 @@
-from setup import bot, MAIN_CHANNELS, GAMES, client
+from setup import bot, MAIN_CHANNELS, GAMES, FREE_CHANNELS, client
 
 
 @bot.event
@@ -21,7 +21,8 @@ async def on_member_update(before, after):
             await after.move_to(ch['wtf'])
 
         if after.activity is None:
-            await after.move_to(populate_channels(bot, MAIN_CHANNELS)['855157821988667432'])
+            await after.move_to(populate_channels(bot, FREE_CHANNELS)['763136430745583677'])
+
 
 @bot.event
 async def on_message(message):
