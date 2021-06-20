@@ -1,6 +1,9 @@
+
 import discord
 from discord import Intents
 from discord.ext import commands
+
+
 
 FREE_CHANNELS = {
     '763136430745583677': '763136430745583677',
@@ -24,8 +27,14 @@ MAIN_CHANNELS = {
 
 }
 
+YURA_PHRAZES = [
+    'ти ще досі не поняв?', 'хулі ти доєбався', '...', 'іди інших позайобуй', 'іди нахуй', 'ДА БЛЯТЬ', 'дебіл блять..',
+    'ХАРЕ БЛЯТЬ', 'ага круто', 'йди нахуй заєбав', 'в тебе там шиза?'
+]
+
 intents = Intents.all()
 bot = commands.Bot(command_prefix='.', intents=intents)
+
 client = discord.Client(guild_subscriptions=True)
 
 

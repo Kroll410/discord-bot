@@ -2,15 +2,13 @@ import asyncio
 import random
 
 import discord
-from discord.ext import tasks
-
 from helpers.sounds import create_concat_sound, delete_concat_sound
 from setup import bot
 
 
 async def pidor_check():
     await bot.wait_until_ready()
-    await asyncio.sleep(18000)
+    await asyncio.sleep(1200)
 
     from discord import FFmpegPCMAudio
     while True:
@@ -29,5 +27,5 @@ async def pidor_check():
                     await x.disconnect()
                     await asyncio.sleep(1)
 
-        await asyncio.sleep(18000)
+        await asyncio.sleep(1200)
         delete_concat_sound()

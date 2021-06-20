@@ -9,7 +9,7 @@ def create_concat_sound(channel_user_name):
 
     engine = pyttsx3.init()
     engine.setProperty('rate', 100)
-    engine.setProperty('voice', 'default')
+    engine.setProperty('voice', engine.getProperty('voices')[12].id)
     engine.save_to_file(channel_user_name, f'tmp_{channel_user_name}.mp3')
     engine.runAndWait()
 
