@@ -8,7 +8,7 @@ from setup import bot
 
 async def pidor_check():
     await bot.wait_until_ready()
-    await asyncio.sleep(1200)
+    await asyncio.sleep(5)
 
     from discord import FFmpegPCMAudio
     while True:
